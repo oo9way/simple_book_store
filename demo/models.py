@@ -30,11 +30,11 @@ class Book(models.Model):
     def __str__(self) -> str:
         return self.title
     
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.print_new_object_message()
-        self.title = self.title.upper()
-        return super().save(*args, *kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.id:
+    #         self.print_new_object_message()
+    #     self.title = self.title.upper()
+    #     return super().save(*args, *kwargs)
     
 
 class NaqdOrCard(models.TextChoices):
@@ -77,3 +77,15 @@ class Sale(models.Model):
 
 
         return super().save(*args, *kwargs)
+    
+
+
+class Todo(models.Model):
+    STATUS = {
+        "not_started": "Boshlanmagan",
+        "started": "Jarayonda",
+        "finished": "Tugatilgan"
+    }
+    
+    task = models.CharField("Vazifa", max_length=255)
+    status = models.CharField(choices=STATUS, max_length=16, default="not_started")

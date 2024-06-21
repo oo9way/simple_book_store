@@ -9,9 +9,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Salom</h1>
-    <img src="{% static 'images/123.jpg' %}" alt="">
+   <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="task" id="" placeholder="Nima ishni bajaramiz">
+    <button type="submit">Kiritish</button>
+   </form>
 
-    <script src="{% static 'js/script.js' %}"></script>
+   <h2>Vazifalarim {{xabar}}</h2>
+   <p>
+    <ul>
+       {% for todo in todolar %}
+        <li>
+            {{todo.task}} - {{todo.get_status_display}}
+        </li>
+       {% endfor %}
+    </ul>
+
+   </p>
 </body>
 </html>

@@ -13,4 +13,4 @@ class SaleAdmin(admin.ModelAdmin):
 
 
 # admin.register(Book, BookAdmin)
-# admin.site.register(Book)
+admin.site.register(Todo)
